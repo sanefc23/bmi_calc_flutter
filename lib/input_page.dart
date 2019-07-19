@@ -17,6 +17,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -70,19 +71,38 @@ class _InputPageState extends State<InputPage> {
             child: ReusableCard(
               colorTag: kActiveCardColor,
               childCard: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'HEIGHT',
                     style: kLabelTextStyle,
                   ),
                   Row(
+                    textBaseline: TextBaseline.alphabetic,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
                     children: <Widget>[
                       Text(
-                        '180',
-                        style: TextStyle(
-                            fontSize: 50.0, fontWeight: FontWeight.w900),
+                        height.toString(),
+                        style: kNumberTextStyle,
                       ),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      )
                     ],
+                  ),
+                  Slider(
+                    value: height.toDouble(),
+                    min: kMinHeight,
+                    max: kMaxHeight,
+                    activeColor: Color(0xFFEB1555),
+                    inactiveColor: Color(0xFF8D8E98),
+                    onChanged: (double newValue) {
+                      setState(() {
+                        height = newValue.round();
+                      });
+                    },
                   ),
                 ],
               ),
@@ -110,10 +130,7 @@ class _InputPageState extends State<InputPage> {
             width: double.infinity,
             height: kBottomContainerHeight,
             child: Center(
-              child: Text(
-                'CALCULATE',
-                style: TextStyle(fontSize: 30.0),
-              ),
+              child: Text('CALCULATE'),
             ),
           ),
         ],

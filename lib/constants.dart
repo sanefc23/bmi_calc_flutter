@@ -5,7 +5,15 @@ const kLabelTextStyle = TextStyle(
   color: Color(0xFF8D8E98),
 );
 
+const kNumberTextStyle = TextStyle(
+  fontSize: 50.0,
+  fontWeight: FontWeight.w900,
+);
+
 const kBottomContainerHeight = 80.0;
 const kActiveCardColor = Color(0xff1D1E33);
 const kInactiveCardColor = Color(0xFF111328);
 const kBottomContainerColor = Color(0xFFEB1555);
+
+const double kMinHeight = 120.0;
+const double kMaxHeight = 220.0;
